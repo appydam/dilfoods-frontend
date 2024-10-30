@@ -1,3 +1,10 @@
+##Glimpse of frontend UI
+
+![Project Dashboard](public/UIPics/pic1.png)
+![Project Dashboard](public/UIPics/pic2.png)
+![Project Dashboard](public/UIPics/pic3.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
