@@ -9,19 +9,20 @@ const API_BASE_URL = 'http://localhost:8080/api';
 export const getBatches = () => api.get('/batches');
 export const getBatchById = (batchId) => api.get(`/batches/${batchId}`);
 export const createBatch = (batch) => api.post('/batches', batch);
+export const createInventory = (inventoryData) => {
+    return axios.post(`${API_BASE_URL}/inventory`, inventoryData);
+};
 export const getInventory = () => api.get('/inventory');
 export const updateStock = async (itemId, newStock) => {
     try {
-        // Sending a PUT request to update the stock
         const response = await api.put(`/inventory/${itemId}/stock`, null, {
-            params: { newStock }, // Send newStock as a query parameter
+            params: { newStock },
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-        return response.data; // Return the response data for further processing
+        return response.data;
     } catch (error) {
-        // Enhanced error handling
         console.error('Error updating stock:', error.response ? error.response.data : error.message);
         throw new Error(error.response ? error.response.data : 'Failed to update stock');
     }

@@ -6,6 +6,7 @@ import QRCodeGenerator from './components/QRCodeGenerator';
 import QRCodeScanner from './components/QRCodeScanner';
 import Predictions from './components/Predictions';
 import InventoryManagement from './components/InventoryManagement';
+import CreateInventory from './components/CreateInventory';
 
 function App() {
   return (
@@ -23,10 +24,10 @@ function App() {
           <QRCodeScanner />
           <Predictions />
           <InventoryManagement />
+          <CreateInventory />
         </div>
 
       </div>
-      {/* </div> */}
 
 
     </>

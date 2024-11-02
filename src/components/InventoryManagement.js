@@ -6,7 +6,6 @@ const InventoryManagement = () => {
     const [editItemId, setEditItemId] = useState(null);
     const [newStock, setNewStock] = useState('');
 
-    // Fetch inventory items on component mount
     useEffect(() => {
         async function fetchInventory() {
             try {
@@ -19,7 +18,6 @@ const InventoryManagement = () => {
         fetchInventory();
     }, []);
 
-    // Handle stock update
     const handleUpdateStock = async (itemId) => {
         if (!newStock) {
             alert("Please enter a valid stock value.");
@@ -27,16 +25,15 @@ const InventoryManagement = () => {
         }
 
         try {
-            // Make the API call to update the stock
+            console.log("arpit came here");
             const response = await updateStock(itemId, newStock);
             console.log('Stock updated successfully:', response.data);
 
-            // Update the local inventory state
             setInventory(inventory.map(item =>
                 item.itemId === itemId ? { ...item, currentStock: newStock } : item
             ));
-            setEditItemId(null); // Exit edit mode
-            setNewStock(''); // Clear input
+            setEditItemId(null);
+            setNewStock('');
         } catch (error) {
             console.error('Error updating stock:', error.response ? error.response.data : error.message);
             alert('Failed to update stock. Please check the console for more details.');

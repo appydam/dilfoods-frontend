@@ -15,7 +15,7 @@ const QRCodeScannerComponent = () => {
             try {
                 const result = await codeReader.current.decodeFromVideoDevice(null, videoRef.current, (result, err) => {
                     if (result) {
-                        console.log('Scan Result:', result); // Log the raw scan result
+                        console.log('Scan Result:', result);
                         handleScan(result);
                     }
                     if (err) {
@@ -38,12 +38,12 @@ const QRCodeScannerComponent = () => {
 
     const handleScan = async (result) => {
         if (result && result.text) {
-            setData(result.text); // Store scanned data
-            console.log('Processed Scanned Data:', result.text); // Log the processed data
+            setData(result.text);
+            console.log('Processed Scanned Data:', result.text);
             try {
-                const { batchId } = JSON.parse(result.text); // Parse scanned data
-                console.log('Parsed Batch ID:', batchId); // Log the parsed Batch ID
-                const response = await getBatchById(batchId); // Fetch data from API
+                const { batchId } = JSON.parse(result.text);
+                console.log('Parsed Batch ID:', batchId);
+                const response = await getBatchById(batchId);
                 alert(`Batch Details: ${JSON.stringify(response.data)}`);
             } catch (err) {
                 console.error('Error fetching batch details:', err);
